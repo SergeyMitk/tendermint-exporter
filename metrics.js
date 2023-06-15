@@ -1,6 +1,6 @@
 const dotenv = require('dotenv');
 const client = require('prom-client');
-const { exec } = require("child_process");
+const { exec } = require('child_process');
 const axios = require('axios');
 
 dotenv.config();
