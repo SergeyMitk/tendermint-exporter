@@ -23,7 +23,7 @@ cd tendermint-exporter
 npm install
 ```
 
-### Step 3: Exporter config
+#### Step 3: Exporter config
 Copy ".env.example" file to ".env" and make changes in ".env" according to your needs.
 ```shell
 cp .env.example .env
@@ -47,7 +47,7 @@ tee $HOME/exporterd.service > /dev/null <<EOF
 EOF
 ```
 
-### Step 5: Copy systemd file to the working directory and start exporter
+#### Step 5: Copy systemd file to the working directory and start exporter
 ```shell
 sudo mv $HOME/exporterd.service /etc/systemd/system/
 sudo systemctl enable exporterd
