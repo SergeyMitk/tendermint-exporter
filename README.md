@@ -16,6 +16,7 @@ These instructions will get you a copy of the project up and running on your loc
 git clone https://github.com/SergeyMitk/tendermint-exporter
 cd tendermint-exporter
 ```
+#### All further actions are carried out in the tendermint-exporter folder. 
 
 #### Step 2: Install npm dependencies 
 ```shell
@@ -36,6 +37,7 @@ tee $HOME/exporterd.service > /dev/null <<EOF
   After=network-online.target
 [Service]
   User=$USER
+  WorkingDirectory=$(pwd)
   ExecStart=$(which node) $(readlink -f index.js)
   Restart=on-failure
   RestartSec=10
