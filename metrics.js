@@ -1,9 +1,6 @@
-const dotenv = require('dotenv');
 const client = require('prom-client');
 const { exec } = require('child_process');
 const axios = require('axios');
-
-dotenv.config();
 
 const nodeApi = process.env.NODE_API;
 const binary = process.env.BINARY;
@@ -16,7 +13,7 @@ function validatorMissedBlocks(registry) {
     });
 
     async function collectValidatorMissedBlocks() {
-        exec(`$(which ${binary}) tendermint show-address`, async (error, stdout, stderr) => {
+        exec(`${binary} tendermint show-address`, async (error, stdout, stderr) => {
             if (error) {
                 console.log(`error: ${error.message}`);
                 return;
@@ -35,7 +32,7 @@ function validatorMissedBlocks(registry) {
             catch (err) {
               console.log(err.message);
             }
-        });  
+        });
     }
 
     setInterval(collectValidatorMissedBlocks, 6000);
