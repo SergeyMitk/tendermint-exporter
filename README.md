@@ -1,22 +1,22 @@
 # Tendermint exporter
 ## Description
-When using the standard Tendermint Prometheus exporter, our team found that sometimes the validator miss counter breaks down and starts to increase continuously without being able to fix it without recreating the validator.
-We've developed a simple and easy-to-use tool that allows you to retrieve validator missed blocks data via a request to the blockchain API.
+Using the standard Tendermint Prometheus exporter, our team found that sometimes the validator miss counter works abnormally: it starts showing missed blocks and increasing their number continuously despite the fact that the validator performs well. Furthermore, this issue can not be solved without recreating the validator.
+We developed a simple and easy-to-use tool that allows you to retrieve the correct data about validator missed blocks via a request to the blockchain API.
 
 ## Getting Started
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
+This is instructions for installing and launching our custom exporter on your local machine for development and testing purposes.
 
 ## Running the application
 
 ### Prerequisites
 - [Node.js](https://nodejs.org)
 
-#### Step 1: Clone this repo to your server and change directory.
+#### Step 1: Clone this repo to your server and change the directory.
 ```shell
 git clone https://github.com/SergeyMitk/tendermint-exporter
 cd tendermint-exporter
 ```
-#### All further actions are carried out in the tendermint-exporter folder. 
+#### All further actions are performed in the tendermint-exporter folder. 
 
 #### Step 2: Install npm dependencies 
 ```shell
@@ -24,12 +24,12 @@ npm install
 ```
 
 #### Step 3: Exporter config
-Copy ".env.example" file to ".env" and make changes in ".env" according to your needs.
+Copy the ".env.example" file to the ".env" and make changes in ".env" according to your needs.
 ```shell
 cp .env.example .env
 ```
 
-#### Step 4: Create systemd service file
+#### Step 4: Create a systemd service file
 ```shell
 tee $HOME/exporterd.service > /dev/null <<EOF
 [Unit]
@@ -47,7 +47,7 @@ tee $HOME/exporterd.service > /dev/null <<EOF
 EOF
 ```
 
-#### Step 5: Copy systemd file to the working directory and start exporter
+#### Step 5: Copy the systemd file to the working directory and start the exporter
 ```shell
 sudo mv $HOME/exporterd.service /etc/systemd/system/
 sudo systemctl enable exporterd
